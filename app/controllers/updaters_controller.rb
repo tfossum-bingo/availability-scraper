@@ -1,13 +1,20 @@
 class UpdatersController < ApplicationController
-  before_action :set_updater, only: %i[ show edit update destroy ]
+  before_action :set_updater, only: %i[ edit update destroy ]
 
   # GET /updaters or /updaters.json
   def index
-
+    @listings = Listing.all.order(airbnb_id: :asc)
+    respond_to do |format|
+      format.json { render json: @listings}
+    end
   end
 
   # GET /updaters/1 or /updaters/1.json
   def show
+    @listings = Listing.where(host_id: params[:id]).order(airbnb_id: :asc)
+    respond_to do |format|
+      format.json { render json: @listings}
+    end
   end
 
   # GET /updaters/new
