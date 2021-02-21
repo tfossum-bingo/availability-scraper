@@ -1,11 +1,11 @@
 <script src="https://unpkg.com/vue"></script>
 <p id="notice"><%= notice %></p>
 <% if Rails.env.production? %>
-  <% api_path = "https://rabbu5.herokuapp.com/updaters/#{@host.id}" %>
+  <% listing_api_path = "https://rabbu5.herokuapp.com/updaters/#{@host.id}" %>
 <% else %>
-  <% api_path = "http://localhost:3000/updaters/#{@host.id}" %>
+  <% listing_api_path = "http://localhost:3000/updaters/#{@host.id}" %>
 <% end %>
-<%= hidden_field_tag :vue_api_path, api_path %>
+<%= hidden_field_tag :vue_api_path, listing_api_path %>
 <%#= hidden_field_tag :host_id, @host.id %>
 <p>
   <strong>Host name:</strong>
