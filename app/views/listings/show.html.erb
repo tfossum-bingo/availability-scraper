@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host:</strong>
+  <%= @listing.host_id %>
+</p>
+
+<p>
+  <strong>Airbnb:</strong>
+  <%= @listing.airbnb_id %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @listing.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @listing.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @listing.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @listing.postal_code %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @listing.active %>
+</p>
+
+<p>
+  <strong>Last scraped:</strong>
+  <%= @listing.last_scraped %>
+</p>
+
+<% if @listing.availabilities.any? %>
+  <% @listing.availabilities.each do |listing| %>
+    <%= "#{listing.availability_date} : #{listing.available}" %>
+    <br>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
