@@ -1,6 +1,10 @@
 <script src="https://unpkg.com/vue"></script>
 <p id="notice"><%= notice %></p>
-<% api_port = ENV.fetch("PORT") {3000} %>
+<% if Rails.env.production? %>
+  <% api_port = 8080 %>
+<% else %>
+  <% api_port = 3000 %>
+<% end %>
 <%= hidden_field_tag :vue_api_port, api_port %>
 <%= hidden_field_tag :host_id, @host.id %>
 <p>
@@ -27,11 +31,11 @@ Listings: <%= @host.listings.try(:length) %>
 <br>
 
 <%# if @host.listings.any? %>
-  <%# @host.listings.sort_by { |l| l.airbnb_id }.each do |listing| %>
-    <%#= link_to "#{listing.airbnb_id}", host_listing_path(listing.id, host_id: @host.id) %>
+<%# @host.listings.sort_by { |l| l.airbnb_id }.each do |listing| %>
+<%#= link_to "#{listing.airbnb_id}", host_listing_path(listing.id, host_id: @host.id) %>
 <!--    Last Updated: <%#= listing.last_scraped %>-->
 <!--    <br>-->
-  <%# end %>
+<%# end %>
 <%# end %>
 
 <div id="app">
