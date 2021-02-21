@@ -6,7 +6,7 @@
   <% listing_api_path = "http://localhost:3000/updaters/#{@host.id}" %>
 <% end %>
 <%= hidden_field_tag :vue_api_path, listing_api_path %>
-<%#= hidden_field_tag :host_id, @host.id %>
+
 <p>
   <strong>Host name:</strong>
   <%= @host.host_name %>
@@ -30,14 +30,6 @@
 Listings: <%= @host.listings.try(:length) %>
 <br>
 
-<%# if @host.listings.any? %>
-<%# @host.listings.sort_by { |l| l.airbnb_id }.each do |listing| %>
-<%#= link_to "#{listing.airbnb_id}", host_listing_path(listing.id, host_id: @host.id) %>
-<!--    Last Updated: <%#= listing.last_scraped %>-->
-<!--    <br>-->
-<%# end %>
-<%# end %>
-
 <div id="app">
   <ul>
     <li v-for="listing in listings">
@@ -56,13 +48,6 @@ Listings: <%= @host.listings.try(:length) %>
 <script>
     const api_path = document.getElementById('vue_api_path').value.toString()
     console.log('API Path: ', api_path)
-    // const host_id = document.getElementById('host_id').value
-
-    // const listings_url = 'http://localhost:' + api_path + '/updaters'
-    // const fetch_options = {
-    //     method: 'GET',
-    //     mode: 'no-cors'
-    // }
 
     const app = new Vue({
         el: '#app',
