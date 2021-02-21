@@ -35,7 +35,7 @@ class Scraper
     loop do
       listing_batch = scraping_agent.fetch_listings(host_airbnb_id, page: counter)
       all_listings += listing_batch
-      break if listing_batch.length < 10 or all_listings >= 20
+      break if listing_batch.length < 10 or all_listings.length >= 20
       counter += 1
     end
     all_listings
