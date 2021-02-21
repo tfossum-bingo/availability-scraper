@@ -1,7 +1,7 @@
 <script src="https://unpkg.com/vue"></script>
 <p id="notice"><%= notice %></p>
 <% if Rails.env.production? %>
-  <% api_path = "https://rabbu5.herokuapp.comupdaters/#{@host.id}" %>
+  <% api_path = "https://rabbu5.herokuapp.comu/pdaters/#{@host.id}" %>
 <% else %>
   <% api_path = "http://localhost:3000/updaters/#{@host.id}" %>
 <% end %>
