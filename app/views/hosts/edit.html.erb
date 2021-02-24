@@ -2,5 +2,6 @@
 
 <%= render 'form', host: @host %>
 
-<%= link_to 'Show', @host %> |
-<%= link_to 'Back', hosts_path %>
+<%= link_to 'Delete', @host, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', @host %> |
+<%= link_to 'All Hosts', hosts_path %>

@@ -19,18 +19,18 @@ require("channels")
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
-import Foo from '../foo'
-import Listing from '../listing'
 import AvailabilityDay from '../availability_day'
-import AvailabilityCalendar  from '../availability_calendar'
+import AvailabilityCalendar from '../availability_calendar'
+import Host from '../host'
+import Listing from '../listing'
 
 Vue.use(TurbolinksAdapter)
 
 Vue.component('app', App)
-Vue.component('foo', Foo)
-Vue.component('listing', Listing)
 Vue.component('availability_day', AvailabilityDay)
 Vue.component('availability_calendar', AvailabilityCalendar)
+Vue.component('host', Host)
+Vue.component('listing', Listing)
 
 document.addEventListener('turbolinks:load', () => {
     const app = new Vue({
