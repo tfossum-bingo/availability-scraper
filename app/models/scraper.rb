@@ -5,6 +5,9 @@ class Scraper
   def initialize
     super
     @scraping_agent = TestClient.new
+    @throttle_listings = 20
+    @throttle_days = 60
+
   end
 
   def refresh_data
@@ -35,7 +38,7 @@ class Scraper
     loop do
       listing_batch = scraping_agent.fetch_listings(host_airbnb_id, page: counter)
       all_listings += listing_batch
-      break if listing_batch.length < 10 or all_listings.length >= 20
+      break if listing_batch.length < 10 or all_listings.length >= @throttle_listings
       counter += 1
     end
     all_listings
@@ -52,7 +55,7 @@ class Scraper
           Availability.create(listing_id: listing.id,
                               availability_date: a['calendarDate'].to_date,
                               available: a['available'])
-          return true if counter >= 90
+          return true if counter >= @throttle_days
         end
       end
 
