@@ -1,4 +1,3 @@
-<script src="https://unpkg.com/vue"></script>
 <p id="notice"><%= notice %></p>
 <% if Rails.env.production? %>
   <% listing_api_path = "https://rabbu5.herokuapp.com/updaters/#{@host.id}" %>
@@ -30,36 +29,12 @@
 Listings: <%= @host.listings.try(:length) %>
 <br>
 
-<div id="app">
-  <ul>
-    <li v-for="listing in listings">
-      <a v-bind:href="'/hosts/' + listing.host_id + '/listings/' + listing.id">{{ listing.airbnb_id }}</a>
-      {{ listing.airbnb_id }} {{ listing.last_scraped }}
-    </li>
-  </ul>
-</div>
+<% if @host.listings.any? %>
+  <% @host.listings.sort_by { |l| l.airbnb_id }.each do |listing| %>
+    <listing :listing="<%= listing.to_json %>"></listing>
+  <% end %>
+<% end %>
 
 
 <%= link_to 'Edit', edit_host_path(@host) %> |
 <%= link_to 'Back', hosts_path %>
-
-
-
-<script>
-    const api_path = document.getElementById('vue_api_path').value.toString()
-    console.log('API Path: ', api_path)
-
-    const app = new Vue({
-        el: '#app',
-        data: {
-            listings: []
-        },
-        created() {
-            fetch(api_path)
-                .then(response => response.json())
-                .then(json => {
-                    this.listings = json
-                })
-        }
-    })
-</script>

@@ -45,12 +45,6 @@
   <%= @listing.last_scraped %>
 </p>
 
-<% if @listing.availabilities.any? %>
-  <% @listing.availabilities.each do |listing| %>
-    <%= "#{listing.availability_date} : #{listing.available}" %>
-    <br>
-  <% end %>
-<% end %>
+<availability_calendar :events="<%= @listing.booked_days.to_json %>"></availability_calendar>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Back', host_path(@listing.host_id) %>
