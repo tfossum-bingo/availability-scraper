@@ -3,10 +3,10 @@ class UpdatersController < ApplicationController
 
   # GET /updaters or /updaters.json
   def index
-    @listings = Listing.all.order(airbnb_id: :asc)
-    respond_to do |format|
-      format.json { render json: @listings}
-    end
+    # @listings = Listing.all.order(airbnb_id: :asc)
+    # respond_to do |format|
+    #   format.json { render json: @listings}
+    # end
   end
 
   # GET /updaters/1 or /updaters/1.json
@@ -46,15 +46,15 @@ class UpdatersController < ApplicationController
     RefreshDataJob.perform_later()
     redirect_to hosts_path, notice: "Data refresh has been scheduled."
   end
-
-  # DELETE /updaters/1 or /updaters/1.json
-  def destroy
-    @updater.destroy
-    respond_to do |format|
-      format.html { redirect_to updaters_url, notice: "Updater was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #
+  # # DELETE /updaters/1 or /updaters/1.json
+  # def destroy
+  #   @updater.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to updaters_url, notice: "Updater was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
