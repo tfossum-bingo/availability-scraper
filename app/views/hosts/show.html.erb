@@ -17,24 +17,19 @@
 </p>
 
 <p>
-  <strong>Active:</strong>
-  <%= @host.active %>
-</p>
-
-<p>
   <strong>Last scrapped:</strong>
   <%= @host.last_scraped %>
 </p>
 
-Listings: <%= @host.listings.try(:length) %>
-<br>
+Listings: <%= @host.listings.try(:length) %> [Limited to 20 Max]
+<hr>
 
 <% if @host.listings.any? %>
   <% @host.listings.sort_by { |l| l.airbnb_id }.each do |listing| %>
     <listing :listing="<%= listing.to_json %>"></listing>
   <% end %>
 <% end %>
-
+<hr>
 
 <%= link_to 'Edit', edit_host_path(@host) %> |
 <%= link_to 'All Hosts', hosts_path %>

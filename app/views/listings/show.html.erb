@@ -1,43 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Listing Availability</h1>
 <p>
   <strong>Host:</strong>
-  <%= @listing.host_id %>
+  <%= @listing.host.host_name %>
 </p>
 
 <p>
-  <strong>Airbnb:</strong>
+  <strong>Listing Airbnb ID:</strong>
   <%= @listing.airbnb_id %>
-</p>
-
-<p>
-  <strong>Address1:</strong>
-  <%= @listing.address1 %>
-</p>
-
-<p>
-  <strong>Address2:</strong>
-  <%= @listing.address2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @listing.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @listing.state %>
-</p>
-
-<p>
-  <strong>Postal code:</strong>
-  <%= @listing.postal_code %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @listing.active %>
 </p>
 
 <p>
