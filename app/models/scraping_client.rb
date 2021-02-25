@@ -1,4 +1,4 @@
-class TestClient
+class ScrapingClient
 
   def fetch_listings(airbnb_id, page: 0)
     requested = 10
