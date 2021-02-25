@@ -9,11 +9,11 @@ class Scraper
 
   end
 
-  def refresh_data
+  def refresh_hosts
     #Taking brute force approach of wiping all data and then refreshing
     # Ideally I'd only update what has changed.
     hosts = Host.includes(:listings).all.order(airbnb_id: :asc)
-    hosts.map { |host| host.refresh_host }
+    hosts.map { |host| ScrapeHostJob.perform_later(host) }
   end
 
 end

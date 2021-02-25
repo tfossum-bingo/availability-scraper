@@ -12,6 +12,6 @@ class RefreshDataJob < ApplicationJob
   end
 
   def perform(*args)
-    Scraper.new.refresh_data
+    Scraper.new.refresh_hosts
   end
 end
